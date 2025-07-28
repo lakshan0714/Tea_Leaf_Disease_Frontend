@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .App-logo {
@@ -12,6 +15,7 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+
 
 .App-header {
   background-color: #282c34;
@@ -35,4 +39,76 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Main Content Styles */
+.main-content {
+  flex: 1;
+  background-color:#E8BCB9;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-container {
+  background-color:#e4b8b5;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 600px;
+}
+
+.file-input {
+  margin: 1rem 0;
+  padding: 0.5rem;
+  background-color:#E8BCB9 ;
+  border: none;
+  border-radius: 5px;
+  color: #432E54;
+  width: 100%;
+}
+
+.predict-button {
+  background-color: #432E54;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 1rem 0;
+  transition: background-color 0.3s;
+}
+
+.predict-button:disabled {
+  background-color: #573e6b;
+  cursor: not-allowed;
+}
+
+.predict-button:hover:not(:disabled) {
+  background-color: #a37d85;
+}
+
+.image-preview {
+  margin: 1rem 0;
+}
+
+.prediction-result {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #4a4f5b;
+  border-radius: 5px;
+}
+
+.cancer {
+  color: #ff6b6b;
+  font-weight: bold;
+}
+
+.no-cancer {
+  color: #4caf50;
+  font-weight: bold;
 }
