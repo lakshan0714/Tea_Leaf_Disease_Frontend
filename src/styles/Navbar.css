@@ -1,16 +1,25 @@
+/* Modern Blue & Green Navbar + Animations */
 .navbar {
-  background-color:#a37d85;
+  background: var(--primary-blue);
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 12px rgba(33, 150, 243, 0.12);
+  animation: slideDown 0.7s;
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
 .nav-brand {
-  color: #432E54;
-  font-size: 1.5rem;
+  color: #fff;
+  font-size: 1.7rem;
   font-weight: bold;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px rgba(33, 150, 243, 0.08);
 }
 
 .nav-links {
@@ -19,14 +28,19 @@
 }
 
 .nav-link {
-  color: white;
+  color: #e0f7fa;
   text-decoration: none;
-  font-size: 1rem;
-  transition: color 0.3s;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: color 0.3s, transform 0.2s;
+  padding: 0.3rem 0.7rem;
+  border-radius: 6px;
 }
 
 .nav-link:hover {
-  color: #61dafb;
+  color: #43e97b;
+  background: rgba(255,255,255,0.12);
+  transform: scale(1.08);
 }
 
 /* Responsive Design */
@@ -39,4 +53,4 @@
   .nav-links {
     gap: 1rem;
   }
-} 
+}

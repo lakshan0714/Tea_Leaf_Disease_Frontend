@@ -10,13 +10,13 @@ const Modal = ({ isOpen, onClose, prediction }) => {
         <button className="modal-close" onClick={onClose}>×</button>
         <div className="modal-body">
           <h2>Prediction Result</h2>
-          <div className={`prediction-box ${prediction === 'Cancer' ? 'cancer' : 'no-cancer'}`}>
+          <div className={`prediction-box ${prediction === 'healthy' ? 'healthy' : 'no-healthy'}`}>
             <p className="prediction-text">{prediction}</p>
           </div>
           <p className="modal-message">
-            {prediction === 'Cancer' 
-              ? 'Please consult with a medical professional for further evaluation.'
-              : 'No signs of cancer detected. Regular check-ups are still recommended.'}
+            {prediction === 'healthy' 
+              ? 'Your tea leaves appear healthy. No disease detected.'
+              : 'Your tea leaves show signs of disease. Please consult an expert.'}
           </p>
         </div>
       </div>

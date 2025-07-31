@@ -5,7 +5,7 @@ import '../styles/Navbar.css';
 const Navbar = () => {
   return (
     <nav className="navbar">
-      <div className="nav-brand">Breast Cancer Detection</div>
+      <div className="nav-brand">Tea Leaf Disease Detection</div>
       <div className="nav-links">
         <Link to="/" className="nav-link">Home</Link>
         <Link to="/about" className="nav-link">About</Link>

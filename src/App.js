@@ -30,7 +30,7 @@ function Home() {
     formData.append('file', selectedImage);
 
     try {
-      const response = await fetch('http://192.168.106.100:8000/predict', {
+      const response = await fetch('http://localhost:8000/predict', {
         method: 'POST',
         body: formData,
       });
@@ -50,30 +50,89 @@ function Home() {
     }
   };
 
+  const handleRemoveImage = () => {
+    setSelectedImage(null);
+    setPrediction(null);
+  };
+
+  const formatFileSize = (bytes) => {
+    if (bytes === 0) return '0 Bytes';
+    const k = 1024;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+  };
+
   return (
     <Fragment>
       <div className="upload-container">
-        <input
-          type="file"
-          accept="image/*"
-          onChange={handleImageUpload}
-          className="file-input"
-        />
+        {/* Upload Header */}
+        <div className="upload-header">
+          <h1 className="upload-title">Tea Leaf Disease Detection</h1>
+          <p className="upload-subtitle">
+            Upload an image of a tea leaf to detect potential diseases using AI
+          </p>
+        </div>
+
+        {/* File Upload Area */}
+        <div className="file-upload-area">
+          <div className="file-input-wrapper">
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleImageUpload}
+              className="file-input"
+              id="file-upload"
+            />
+            <label htmlFor="file-upload" className="file-input-display">
+              <div className="upload-icon">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
+                </svg>
+              </div>
+              <div className="upload-text">
+                {selectedImage ? 'Change Image' : 'Choose Image'}
+              </div>
+              <div className="upload-hint">
+                Drag and drop or click to select • PNG, JPG, JPEG up to 10MB
+              </div>
+            </label>
+          </div>
+        </div>
+
+        {/* Image Preview */}
         {selectedImage && (
           <div className="image-preview">
             <img
               src={URL.createObjectURL(selectedImage)}
-              alt="Selected"
-              style={{ maxWidth: '400px', maxHeight: '400px'}}
+              alt="Selected tea leaf"
+              className="preview-image"
             />
+            <div className="preview-info">
+              <div>
+                <strong>{selectedImage.name}</strong>
+                <br />
+                <span>{formatFileSize(selectedImage.size)}</span>
+              </div>
+              <button 
+                onClick={handleRemoveImage}
+                className="remove-image"
+                type="button"
+              >
+                Remove
+              </button>
+            </div>
           </div>
         )}
+
+        {/* Predict Button */}
         <button
           onClick={handlePredict}
           disabled={!selectedImage || loading}
-          className="predict-button"
+          className={`predict-button ${loading ? 'loading' : ''}`}
         >
-          {loading ? 'Predicting...' : 'Predict'}
+          {loading && <div className="loading-spinner"></div>}
+          {loading ? 'Analyzing Image...' : 'Detect Disease'}
         </button>
       </div>
 
@@ -89,8 +148,8 @@ function Home() {
 function About() {
   return (
     <div className="about-container">
-      <h2>About Breast Cancer Detection</h2>
-      <p>This application uses advanced AI technology to detect breast cancer from medical images.</p>
+      <h2>About Tea_Leaf_Detection</h2>
+      <p>This application uses advanced AI technology to detect Tea_Leaf_Detection using Advanced datasets</p>
     </div>
   );
 }
@@ -116,7 +175,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
-        <Footer />
+       
       </div>
     </Router>
   );

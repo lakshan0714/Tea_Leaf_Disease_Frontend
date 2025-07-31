@@ -1,8 +1,15 @@
+/* Modern Blue & Green Footer + Animations */
 .footer {
-  background-color:#a37d85;
-  color: white;
+  background: linear-gradient(90deg, #2196f3 60%, #43e97b 100%);
+  color: #e0f7fa;
   padding: 2rem 0;
   margin-top: auto;
+  animation: fadeInFooter 1s;
+}
+
+@keyframes fadeInFooter {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .footer-content {
@@ -21,32 +28,33 @@
 }
 
 .footer-section h3 {
-  color: #432E54;
+  color: #fff;
   margin-bottom: 1rem;
 }
 
 .social-links {
-  
   gap: 1rem;
   margin-top: 0.5rem;
 }
 
 .social-link {
-  color: white;
+  color: #e0f7fa;
   margin: 1rem;
   text-decoration: none;
-  transition: color 0.3s;
+  transition: color 0.3s, transform 0.2s;
+  font-weight: 500;
 }
 
 .social-link:hover {
-  color: #61dafb;
+  color: #43e97b;
+  transform: scale(1.1);
 }
 
 .footer-bottom {
   text-align: center;
   margin-top: 2rem;
   padding-top: 1rem;
-  border-top: 1px solid #3a3f4b;
+  border-top: 1px solid #b2ebf2;
 }
 
 /* Responsive Design */
@@ -60,4 +68,4 @@
   .footer-section {
     margin: 1rem 0;
   }
-} 
+}
